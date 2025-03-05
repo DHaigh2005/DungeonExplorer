@@ -22,7 +22,7 @@ namespace DungeonExplorer
         public string damage()
         {
             this.Health = this.Health - 10;
-            return $"You hit the dragon with your mace. It is now on {this.Health} health."
+            return $"You hit the dragon with your mace. It is now on {this.Health} health.";
         }
     }
 }

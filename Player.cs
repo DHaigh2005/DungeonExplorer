@@ -28,7 +28,8 @@ namespace DungeonExplorer
         }
         public string regen()
         {
-            Console.WriteLine("You find cover from the dragon's attacks and you wait to heal");
+            Console.WriteLine("");
+            Console.WriteLine("You find cover from the dragon's attacks and you wait to heal.n");
             Console.WriteLine("+20 health.");
             this.Health = this.Health + 20;
             return $"You are now on {this.Health} health.";

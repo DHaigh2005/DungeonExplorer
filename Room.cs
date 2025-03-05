@@ -18,7 +18,7 @@ namespace DungeonExplorer
         }
         public string room_inventory()
         {
-            return("mace")
+            return ("mace");
         }
     }
 }
