@@ -26,6 +26,11 @@ namespace DungeonExplorer
         {
             return this.Health;
         }
+
+        public void take_damage(int damage)
+        {
+            Health = Health - damage;
+        }
         public string regen()
         {
             Console.WriteLine("");

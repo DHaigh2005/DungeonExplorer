@@ -22,7 +22,14 @@ namespace DungeonExplorer
         public string damage()
         {
             this.Health = this.Health - 10;
-            return $"You hit the dragon with your mace. It is now on {this.Health} health.";
+            return $"\nYou hit the dragon with your mace. You dealt 10 damage.\n";
+        }
+
+        public string attack(Player player)
+        {
+            int damage = 10;
+            player.take_damage(damage);
+            return $"The dragon sprayed you with fire. You recieved {damage} damage.\n";
         }
     }
 }

@@ -27,7 +27,7 @@ namespace DungeonExplorer
             while (playing == true)
             {
                 // Code your playing logic here
-                while (current_enemy.return_health() > 0)
+                while (current_enemy.return_health() > 0 && player.return_health() > 0)
                 {   
                     if (player.return_health() > 30 )
                     {
@@ -36,8 +36,44 @@ namespace DungeonExplorer
                         Console.Write($"{player.return_health()}\n");
                         Console.ResetColor();
                     }
-                    Console.WriteLine($"Your health is {player.return_health()}.");
-                    Console.WriteLine($"Dragons health is {current_enemy.return_health()}.");
+                    else if (player.return_health() <= 30 && player.return_health() > 10)
+                    {
+                        Console.Write("Your health is ");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.Write($"{player.return_health()}\n");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.Write("Your health is ");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write($"{player.return_health()}\n");
+                        Console.ResetColor();
+                    }
+
+                    if (current_enemy.return_health() > 30)
+                    {
+                        Console.Write("Dragons health is ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write($"{current_enemy.return_health()}\n");
+                        Console.ResetColor();
+                    }
+                    else if (current_enemy.return_health() <= 30 && current_enemy.return_health() > 10)
+                    {
+                        Console.Write("Dragons health is ");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.Write($"{current_enemy.return_health()}\n");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.Write("Dragons health is ");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write($"{current_enemy.return_health()}\n");
+                        Console.ResetColor();
+                    }
+
+                    
                     string input = this.player_input();
                     if (input == ("attack") && player.item_in_inventory() == true)
                     {
@@ -63,9 +99,26 @@ namespace DungeonExplorer
                     {
                         Console.WriteLine("\nNot a valid response. Please choose one of the prompted choices.\n");
                     }
+
+                    if (current_enemy.return_health() > 0)
+                    {
+                        Console.WriteLine(current_enemy.attack(player));
+                    }
+
+                    if (player.return_health() <= 0)
+                    {
+                        Console.WriteLine("You have been defeated by the dragon.");
+                        playing = false;
+                    }
+
                     playing = false;
                 }
-                Console.WriteLine("With one final blow, you have successfully defeated the dragon.");
+                if (current_enemy.return_health() <= 0)
+                {
+                    Console.WriteLine("With one final blow, you have successfully defeated the dragon.");
+                    playing = false;
+                }
+              
             }
         }
         private string player_input()
@@ -95,7 +148,11 @@ namespace DungeonExplorer
             }
             if (player.item_in_inventory() == true)
             {
-                Console.WriteLine("Enter 'inventory' to view your items.");
+                Console.Write("Enter ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("'inventory' ");
+                Console.ResetColor();
+                Console.Write("to view your items.\n");
             }
             Console.WriteLine();
             string input = Console.ReadLine();
