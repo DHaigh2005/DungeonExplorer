@@ -29,10 +29,13 @@ namespace DungeonExplorer
         public string regen()
         {
             Console.WriteLine("");
-            Console.WriteLine("You find cover from the dragon's attacks and you wait to heal.n");
-            Console.WriteLine("+20 health.");
+            Console.WriteLine("You find cover from the dragon's attacks and you wait to heal.\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("+20 ");
+            Console.ResetColor();
+            Console.Write("health.\n");
             this.Health = this.Health + 20;
-            return $"You are now on {this.Health} health.";
+            return "\n";
         }
         public bool item_in_inventory()
         {

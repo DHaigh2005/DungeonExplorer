@@ -28,7 +28,14 @@ namespace DungeonExplorer
             {
                 // Code your playing logic here
                 while (current_enemy.return_health() > 0)
-                {
+                {   
+                    if (player.return_health() > 30 )
+                    {
+                        Console.Write("Your health is ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write($"{player.return_health()}\n");
+                        Console.ResetColor();
+                    }
                     Console.WriteLine($"Your health is {player.return_health()}.");
                     Console.WriteLine($"Dragons health is {current_enemy.return_health()}.");
                     string input = this.player_input();
@@ -42,7 +49,7 @@ namespace DungeonExplorer
                     }
                     else if (input == ("inventory") && player.item_in_inventory() == true)
                     {
-                        Console.WriteLine($"You have: {player.InventoryContents()}");
+                        Console.WriteLine($"\nYou have: {player.InventoryContents()}\n");
                     }
                     else if (input == ("pick up") && player.item_in_inventory() == false)
                     {
@@ -54,7 +61,7 @@ namespace DungeonExplorer
                     }
                     else
                     {
-                        Console.WriteLine("Not a valid response. Please choose one of the prompted choices.");
+                        Console.WriteLine("\nNot a valid response. Please choose one of the prompted choices.\n");
                     }
                     playing = false;
                 }
@@ -65,19 +72,32 @@ namespace DungeonExplorer
         {
             Console.WriteLine("");
             Console.WriteLine("Pick an option:");
-            Console.WriteLine("Enter 'regen' to increase your health.");
+            Console.Write("Enter ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("'regen' ");
+            Console.ResetColor();
+            Console.Write("to increase your health.\n");
             if (player.item_in_inventory() == true)
             {
-                Console.WriteLine("Enter 'attack' to hit the dragon.");
+                Console.Write("Enter ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("'attack' ");
+                Console.ResetColor();
+                Console.Write("to hit the dragon.\n");
             }
             if (player.item_in_inventory() == false)
             {
-                Console.WriteLine("Enter 'pick up' to grab the weapon.");
+                Console.Write("Enter ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("'pick up' ");
+                Console.ResetColor();
+                Console.Write("to grab the weapon.\n");
             }
             if (player.item_in_inventory() == true)
             {
                 Console.WriteLine("Enter 'inventory' to view your items.");
             }
+            Console.WriteLine();
             string input = Console.ReadLine();
             return input;
         }
