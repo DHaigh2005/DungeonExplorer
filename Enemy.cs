@@ -15,20 +15,20 @@ namespace DungeonExplorer
             this.Health = health;
             this.Name = name;
         }
-        public int return_health()
+        public int ReturnHealth()
         {
             return this.Health;
         }
-        public string damage()
+        public string Damage()
         {
             this.Health = this.Health - 10;
             return $"\nYou hit the dragon with your mace. You dealt 10 damage.\n";
         }
 
-        public string attack(Player player)
+        public string Attack(Player player)
         {
             int damage = 10;
-            player.take_damage(damage);
+            player.TakeDamage(damage);
             return $"The dragon sprayed you with fire. You recieved {damage} damage.\n";
         }
     }

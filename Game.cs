@@ -9,87 +9,87 @@ namespace DungeonExplorer
     internal class Game
     {
         private Player player;
-        private Room current_room;
-        private Enemy current_enemy;
+        private Room currentRoom;
+        private Enemy currentEnemy;
 
         public Game()
         {
             // Initialize the game with one room and one player
-            current_room = new Room("You are in a dimly lit dungeon. You hear strange noises. There is a weapon mounted on the wall. As you move closer, your torch reveals a dragon guarding a door.\n");
+            currentRoom = new Room("You are in a dimly lit dungeon. You hear strange noises. There is a weapon mounted on the wall. As you move closer, your torch reveals a dragon guarding a door.\n");
             player = new Player("Warrior", 50);
-            current_enemy = new Enemy(50, "Dragon");
+            currentEnemy = new Enemy(50, "Dragon");
         }
         public void Start()
         {
             // Change the playing logic into true and populate the while loop
             bool playing = true;
-            Console.WriteLine(current_room.GetDescription());
+            Console.WriteLine(currentRoom.GetDescription());
             while (playing == true)
             {
                 // Code your playing logic here
-                while (current_enemy.return_health() > 0 && player.return_health() > 0)
+                while (currentEnemy.ReturnHealth() > 0 && player.ReturnHealth() > 0)
                 {   
-                    if (player.return_health() > 30 )
+                    if (player.ReturnHealth() > 30 )
                     {
                         Console.Write("Your health is ");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write($"{player.return_health()}\n");
+                        Console.Write($"{player.ReturnHealth()}\n");
                         Console.ResetColor();
                     }
-                    else if (player.return_health() <= 30 && player.return_health() > 10)
+                    else if (player.ReturnHealth() > 10)
                     {
                         Console.Write("Your health is ");
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.Write($"{player.return_health()}\n");
+                        Console.Write($"{player.ReturnHealth()}\n");
                         Console.ResetColor();
                     }
                     else
                     {
                         Console.Write("Your health is ");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write($"{player.return_health()}\n");
+                        Console.Write($"{player.ReturnHealth()}\n");
                         Console.ResetColor();
                     }
 
-                    if (current_enemy.return_health() > 30)
+                    if (currentEnemy.ReturnHealth() > 30)
                     {
                         Console.Write("Dragons health is ");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write($"{current_enemy.return_health()}\n");
+                        Console.Write($"{currentEnemy.ReturnHealth()}\n");
                         Console.ResetColor();
                     }
-                    else if (current_enemy.return_health() <= 30 && current_enemy.return_health() > 10)
+                    else if (currentEnemy.ReturnHealth() > 10)
                     {
                         Console.Write("Dragons health is ");
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.Write($"{current_enemy.return_health()}\n");
+                        Console.Write($"{currentEnemy.ReturnHealth()}\n");
                         Console.ResetColor();
                     }
                     else
                     {
                         Console.Write("Dragons health is ");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write($"{current_enemy.return_health()}\n");
+                        Console.Write($"{currentEnemy.ReturnHealth()}\n");
                         Console.ResetColor();
                     }
 
                     
-                    string input = this.player_input();
-                    if (input == ("attack") && player.item_in_inventory() == true)
+                    string input = this.PlayerInput();
+                    if (input == ("attack") && player.ItemInInventory() == true)
                     {
-                        Console.WriteLine(current_enemy.damage());
+                        Console.WriteLine(currentEnemy.Damage());
                     }
                     else if (input == ("regen"))
                     {
-                        Console.WriteLine(player.regen());
+                        Console.WriteLine(player.Regen());
                     }
-                    else if (input == ("inventory") && player.item_in_inventory() == true)
+                    else if (input == ("inventory") && player.ItemInInventory() == true)
                     {
                         Console.WriteLine($"\nYou have: {player.InventoryContents()}\n");
                     }
-                    else if (input == ("pick up") && player.item_in_inventory() == false)
+                    else if (input == ("pick up") && player.ItemInInventory() == false)
                     {
-                        string warrior_inventory = current_room.room_inventory();
+                        string warrior_inventory = currentRoom.RoomInventory();
                         player.PickUpItem(warrior_inventory);
                         Console.WriteLine("");
                         Console.WriteLine($"You picked up the {warrior_inventory} mounted on the wall.");
@@ -100,12 +100,12 @@ namespace DungeonExplorer
                         Console.WriteLine("\nNot a valid response. Please choose one of the prompted choices.\n");
                     }
 
-                    if (current_enemy.return_health() > 0)
+                    if (currentEnemy.ReturnHealth() > 0)
                     {
-                        Console.WriteLine(current_enemy.attack(player));
+                        Console.WriteLine(currentEnemy.Attack(player));
                     }
 
-                    if (player.return_health() <= 0)
+                    if (player.ReturnHealth() <= 0)
                     {
                         Console.WriteLine("You have been defeated by the dragon.");
                         playing = false;
@@ -113,7 +113,7 @@ namespace DungeonExplorer
 
                     playing = false;
                 }
-                if (current_enemy.return_health() <= 0)
+                if (currentEnemy.ReturnHealth() <= 0)
                 {
                     Console.WriteLine("With one final blow, you have successfully defeated the dragon.");
                     playing = false;
@@ -121,7 +121,7 @@ namespace DungeonExplorer
               
             }
         }
-        private string player_input()
+        private string PlayerInput()
         {
             Console.WriteLine("");
             Console.WriteLine("Pick an option:");
@@ -130,7 +130,7 @@ namespace DungeonExplorer
             Console.Write("'regen' ");
             Console.ResetColor();
             Console.Write("to increase your health.\n");
-            if (player.item_in_inventory() == true)
+            if (player.ItemInInventory() == true)
             {
                 Console.Write("Enter ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -138,7 +138,7 @@ namespace DungeonExplorer
                 Console.ResetColor();
                 Console.Write("to hit the dragon.\n");
             }
-            if (player.item_in_inventory() == false)
+            if (player.ItemInInventory() == false)
             {
                 Console.Write("Enter ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -146,7 +146,7 @@ namespace DungeonExplorer
                 Console.ResetColor();
                 Console.Write("to grab the weapon.\n");
             }
-            if (player.item_in_inventory() == true)
+            if (player.ItemInInventory() == true)
             {
                 Console.Write("Enter ");
                 Console.ForegroundColor = ConsoleColor.Yellow;

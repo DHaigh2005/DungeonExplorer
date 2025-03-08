@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DungeonExplorer
 {
@@ -9,16 +10,18 @@ namespace DungeonExplorer
         public Room(string description)
         {
             this.description = description;
-            this.inventory.Add("mace");
+            this.inventory.Add("Mace");
         }
 
         public string GetDescription()
         {
             return description;
         }
-        public string room_inventory()
+        public string RoomInventory()
         {
-            return ("mace");
+            string item = inventory[0];
+            return (item);
         }
+
     }
 }

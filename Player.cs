@@ -22,16 +22,16 @@ namespace DungeonExplorer
         {
             return string.Join(", ", inventory);
         }
-        public int return_health()
+        public int ReturnHealth()
         {
             return this.Health;
         }
 
-        public void take_damage(int damage)
+        public void TakeDamage(int damage)
         {
             Health = Health - damage;
         }
-        public string regen()
+        public string Regen()
         {
             Console.WriteLine("");
             Console.WriteLine("You find cover from the dragon's attacks and you wait to heal.\n");
@@ -42,7 +42,7 @@ namespace DungeonExplorer
             this.Health = this.Health + 20;
             return "\n";
         }
-        public bool item_in_inventory()
+        public bool ItemInInventory()
         {
             if (inventory.Count > 0)
             {
