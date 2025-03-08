@@ -67,7 +67,7 @@ namespace DungeonExplorer
                     }
                     else
                     {
-                        Console.Write("Dragons health is ");
+                        Console.Write("Dragon's health is ");
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write($"{currentEnemy.ReturnHealth()}\n");
                         Console.ResetColor();
@@ -156,7 +156,7 @@ namespace DungeonExplorer
             }
             Console.WriteLine();
             string input = Console.ReadLine();
-            return input;
+            return input.ToLower().Trim();
         }
     }
 }
