@@ -29,7 +29,7 @@ namespace DungeonExplorer
         {
             int damage = 10;
             player.TakeDamage(damage);
-            return $"The dragon sprayed you with fire. You recieved {damage} damage.\n";
+            return $"The dragon sprayed you with fire. You received {damage} damage.\n";
         }
     }
 }

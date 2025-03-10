@@ -53,14 +53,14 @@ namespace DungeonExplorer
 
                     if (currentEnemy.ReturnHealth() > 30)
                     {
-                        Console.Write("Dragons health is ");
+                        Console.Write("Dragon's health is ");
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write($"{currentEnemy.ReturnHealth()}\n");
                         Console.ResetColor();
                     }
                     else if (currentEnemy.ReturnHealth() > 10)
                     {
-                        Console.Write("Dragons health is ");
+                        Console.Write("Dragon's health is ");
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.Write($"{currentEnemy.ReturnHealth()}\n");
                         Console.ResetColor();
