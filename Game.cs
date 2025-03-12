@@ -30,6 +30,7 @@ namespace DungeonExplorer
                 // Code your playing logic here
                 while (currentEnemy.ReturnHealth() > 0 && player.ReturnHealth() > 0)
                 {   
+                    //colour of health changes, dependent on how low it is
                     if (player.ReturnHealth() > 30 )
                     {
                         Console.Write("Your health is ");
@@ -74,7 +75,7 @@ namespace DungeonExplorer
                         Console.ResetColor();
                     }
 
-                    
+                    //processes the users input and performs required processes
                     string input = this.PlayerInput();
                     if (input == ("attack") && player.ItemInInventory() == true)
                     {
@@ -122,6 +123,7 @@ namespace DungeonExplorer
               
             }
         }
+        //prompts the user for an input
         private string PlayerInput()
         {
             Console.WriteLine("");

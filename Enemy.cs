@@ -15,16 +15,18 @@ namespace DungeonExplorer
             this.Health = health;
             this.Name = name;
         }
+        //Displays enemy's health
         public int ReturnHealth()
         {
             return this.Health;
         }
+        //Enemy recieves damage
         public string Damage()
         {
             this.Health = this.Health - 10;
             return $"\nYou hit the dragon with your mace. You dealt 10 damage.\n";
         }
-
+        //Enemy attacks the player
         public string Attack(Player player)
         {
             int damage = 10;

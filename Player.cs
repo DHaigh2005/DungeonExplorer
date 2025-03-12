@@ -21,19 +21,22 @@ namespace DungeonExplorer
         {
             inventory.Add(item);
         }
+        
         public string InventoryContents()
         {
             return string.Join(", ", inventory);
         }
+        //Displays player's health
         public int ReturnHealth()
         {
             return this.Health;
         }
-
+        //player recieves damage
         public void TakeDamage(int damage)
         {
             Health = Health - damage;
         }
+        //player heals 20 hp
         public string Regen()
         {
             Console.WriteLine("");
@@ -45,6 +48,7 @@ namespace DungeonExplorer
             this.Health = this.Health + 20;
             return "\n";
         }
+        //returns true if the has an item in the inventory
         public bool ItemInInventory()
         {
             if (inventory.Count > 0)

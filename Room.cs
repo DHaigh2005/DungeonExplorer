@@ -12,11 +12,12 @@ namespace DungeonExplorer
             this.description = description;
             this.inventory.Add("Mace");
         }
-
+        //displays room description
         public string GetDescription()
         {
             return description;
         }
+        //displays the room's inventory
         public string RoomInventory()
         {
             string item = inventory[0];
