@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Media;
 using System.Runtime.InteropServices;
@@ -156,6 +157,8 @@ namespace DungeonExplorer
             }
             Console.WriteLine();
             string input = Console.ReadLine();
+            // I used Debug.Assert here for managing the user input
+            Debug.Assert(input == "attack" || input == "pick up" || input == "regen" || input == "inventory", "The test has failed. Please enter a valid input.");
             return input.ToLower().Trim();
         }
     }

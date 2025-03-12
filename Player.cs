@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DungeonExplorer
 {
@@ -12,6 +13,8 @@ namespace DungeonExplorer
         public Player(string name, int health) 
         {
             Name = name;
+            // Test to check that the health is a positive integer
+            Testing.TestForPositiveInteger(health);
             Health = health;
         }
         public void PickUpItem(string item)
